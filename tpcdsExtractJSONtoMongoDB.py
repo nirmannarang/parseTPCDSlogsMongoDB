@@ -1,18 +1,36 @@
 #!/usr/bin/python
 
+import sys
 import re
 import json
-
+import subprocess
+import datetime
 #q1,q2,q3_single_ppc64le_2e_1c_1g_0 NaN case
-#tfile=open('C:/Users/nirman_narang/Documents/q1_single_ppc64le_12e_1c_1g_3.nohup', 'rt')
-tfile=open('C:/Users/nirman_narang/Documents/q1,q2,q3_single_ppc64le_2e_1c_1g_0.nohup', 'rt')
+if len(sys.argv) != 5:
+    print("All arguments are not passed !!")
+    exit()
+
+logFile=sys.argv[1]
+git_url=sys.argv[2]
+last_commit=sys.argv[3]
+#date=sys.argv[4]
+master=sys.argv[4]
+tfile=open(logFile, 'rt')
 contents=tfile.readlines()
 content=tfile.read()
 name = "TPCDS"
-git_url = "https://github.com/apache/spark"
-last_commit = "1472cac4bb31c1886f82830778d34c4dd9030d7a"
-date = "2016-03-15T18:25:43.511Z"
-master = "10.20.3.144"
+jsonFileName=logFile.strip(".nohup")+".json"
+#git_url = "https://github.com/apache/spark"
+#last_commit = "1472cac4bb31c1886f82830778d34c4dd9030d7a"
+#date = "2016-03-15T18:25:43.511Z"
+#date="2016-03-15T18:25:43.511Z"
+date=datetime.datetime.utcnow()
+date_str=date.strftime("%Y-%m-%dT%H:%M:%S.%f")
+date_str=date_str[:-3]
+date_str=date_str+'Z'
+print(date_str)
+#date="2017-03-24T11:51:40.916251"
+#master = "10.20.3.144"
 queryList=[]
 flag=0
 #regex=re.compile('\|name\s*\|minTimeMs\s*\|maxTimeMs\s*\|avgTimeMs\s*\|')
@@ -24,22 +42,8 @@ dict_stats={}
 dict_stats["name"]=name
 dict_stats["git_url"]=git_url
 dict_stats["last_commit"]=last_commit
-dict_stats["date"]=date
+dict_stats["date"]=date_str
 dict_stats["master"]=master
-
-
-
-for line in contents:
-	#print(line)
-	if "QUERY LIST END" in line:
-		break
-	if "== QUERY LIST ==" in line:
-		flag=1
-		continue
-	if flag == 1:
-		queryList.append(line.strip())
-print(queryList)
-
 workloads=[]
 dict_temp={}
 metrics_temp=[]
@@ -48,7 +52,7 @@ metrics_temp=[]
 for lines in contents:
 	result = regex.search(lines)
 	if result:
-		print("found")
+		#print("found")
 		dict_temp.clear()
 		metrics_temp=[]
 		#print(result.group(1))
@@ -80,7 +84,11 @@ for lines in contents:
 		#print(dict_temp)
 		workloads.append(dict_temp.copy())
 
+tfile.close()
 dict_stats["workloads"]=workloads
 json_string=json.dumps(dict_stats)
-print(json_string)
-#print(dict_stats)
+#print(json_string)
+jsonFile=open(jsonFileName, "wb")
+jsonFile.write(json_string)
+jsonFile.close()
+
