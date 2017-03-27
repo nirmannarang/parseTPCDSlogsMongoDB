@@ -5,6 +5,10 @@ logDir=/root/parseTPCDSlogsMongoDB/logs
 log_file_name=$(ls -lrt  ${logDir} | tail -2 | head -1 | awk -F " " '{print  $9 }')
 #log_file="/root/parseTPCDSlogsMongoDB/q1,q2,q3_single_ppc64le_2e_1c_1g_3.nohup"
 git_url="https://github.com/apache/spark"
+
+#Get last commit hash of git 
+#Usage: git log -n 1 [branch_name] branch_name(may be remote or local branch) is optional. Without branch_name it will show the latest commit of current branch.
+#last_commit=$(git log -n 1 --pretty=format:"%H")
 last_commit="1472cac4bb31c1886f82830778d34c4dd9030d7a"
 #date=$(date +"%d-%m-%Y_%H:%M:%S")
 master="10.20.3.144"
