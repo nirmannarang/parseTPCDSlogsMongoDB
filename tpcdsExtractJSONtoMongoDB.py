@@ -58,13 +58,13 @@ for lines in contents:
 		#print(result.group(1))
 		query=str(result.group(1))
 		#print(result.group(2))
-		minTimeMs=str(result.group(2))
+		minTimeMs=result.group(2)
 		#print(result.group(5))
-		maxTimeMs=str(result.group(5))
+		maxTimeMs=result.group(5)
 		#print(result.group(8))
-		avgTimeMs=str(result.group(8))
+		avgTimeMs=result.group(8)
 		#print(result.group(11))
-		stdDev=str(result.group(11))
+		stdDev=result.group(11)
 		dict_temp["name"]="minTimeMs"
 		dict_temp["value"]=minTimeMs
 		metrics_temp.append(dict_temp.copy())
