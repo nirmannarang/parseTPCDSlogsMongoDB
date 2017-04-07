@@ -5,6 +5,7 @@ import re
 import json
 import subprocess
 import datetime
+from decimal import Decimal
 #q1,q2,q3_single_ppc64le_2e_1c_1g_0 NaN case
 if len(sys.argv) != 5:
     print("All arguments are not passed !!")
@@ -14,6 +15,7 @@ logFile=sys.argv[1]
 git_url=sys.argv[2]
 last_commit=sys.argv[3]
 #date=sys.argv[4]
+#print(logFile)
 master=sys.argv[4]
 tfile=open(logFile, 'rt')
 contents=tfile.readlines()
@@ -24,11 +26,12 @@ jsonFileName=logFile.strip(".nohup")+".json"
 #last_commit = "1472cac4bb31c1886f82830778d34c4dd9030d7a"
 #date = "2016-03-15T18:25:43.511Z"
 #date="2016-03-15T18:25:43.511Z"
+#print(jsonFileName)
 date=datetime.datetime.utcnow()
 date_str=date.strftime("%Y-%m-%dT%H:%M:%S.%f")
 date_str=date_str[:-3]
 date_str=date_str+'Z'
-print(date_str)
+#print(date_str)
 #date="2017-03-24T11:51:40.916251"
 #master = "10.20.3.144"
 queryList=[]
@@ -47,7 +50,7 @@ dict_stats["master"]=master
 workloads=[]
 dict_temp={}
 metrics_temp=[]
-
+roundTwoPlaces = Decimal(10) ** -2
 
 for lines in contents:
 	result = regex.search(lines)
@@ -57,14 +60,18 @@ for lines in contents:
 		metrics_temp=[]
 		#print(result.group(1))
 		query=str(result.group(1))
-		#print(result.group(2))
-		minTimeMs=result.group(2)
+		#print(result.group(2))    format(1.679, '.2f')   Decimal('3.214').quantize(TWOPLACES) "{0:.2f}".format(5)
+		minTimeMs=float(Decimal(result.group(2)).quantize(roundTwoPlaces))
 		#print(result.group(5))
-		maxTimeMs=result.group(5)
+		maxTimeMs=float(Decimal(result.group(5)).quantize(roundTwoPlaces))
 		#print(result.group(8))
-		avgTimeMs=result.group(8)
+		avgTimeMs=float(Decimal(result.group(8)).quantize(roundTwoPlaces))
 		#print(result.group(11))
 		stdDev=result.group(11)
+		if stdDev == 'NaN':
+			stdDev=float(Decimal('0').quantize(roundTwoPlaces))
+		else:
+			stdDev=float(Decimal(result.group(8)).quantize(roundTwoPlaces))
 		dict_temp["name"]="minTimeMs"
 		dict_temp["value"]=minTimeMs
 		metrics_temp.append(dict_temp.copy())
@@ -87,6 +94,7 @@ for lines in contents:
 tfile.close()
 dict_stats["workloads"]=workloads
 json_string=json.dumps(dict_stats)
+#print(dict_stats)
 #print(json_string)
 jsonFile=open(jsonFileName, "wb")
 jsonFile.write(json_string)
