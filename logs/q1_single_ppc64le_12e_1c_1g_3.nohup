@@ -1,139 +1,0 @@
-Using properties file: /home/hdp_test/spark-2.0.1-bin-hadoop2.7/conf/spark-defaults.conf
-Adding default property: spark.history.fs.logDirectory=/home/hdp_test/hdfs_dir/spark-events
-Adding default property: spark.eventLog.enabled=true
-Adding default property: spark.master=yarn
-Adding default property: spark.driver.extraClassPath=/usr/share/java/mysql-connector-java.jar
-Adding default property: spark.eventLog.dir=/home/hdp_test/hdfs_dir/spark-events
-Adding default property: spark.executor.extraClassPath=/usr/share/java/mysql-connector-java.jar
-Adding default property: spark.eventLog.compress=true
-Parsed arguments:
-  master                  yarn
-  deployMode              client
-  executorMemory          1g
-  executorCores           1
-  totalExecutorCores      null
-  propertiesFile          /home/hdp_test/spark-2.0.1-bin-hadoop2.7/conf/spark-defaults.conf
-  driverMemory            22g
-  driverCores             10
-  driverExtraClassPath    /usr/share/java/mysql-connector-java.jar
-  driverExtraLibraryPath  null
-  driverExtraJavaOptions  null
-  supervise               false
-  queue                   null
-  numExecutors            12
-  files                   null
-  pyFiles                 null
-  archives                null
-  mainClass               com.databricks.spark.sql.perf.RunTPCBenchmark
-  primaryResource         file:/home/hdp_test/tpcds-setup/tpcdeps/spark-sql-perf/target/scala-2.11/spark-sql-perf-assembly-0.4.11-SNAPSHOT.jar
-  name                    q1
-  childArgs               [-b com.databricks.spark.sql.perf.tpcds.TPCDS -i 2 -f q1 -d tpcds1g]
-  jars                    null
-  packages                null
-  packagesExclusions      null
-  repositories            null
-  verbose                 true
-
-Spark properties used, including those specified through
- --conf and those from the properties file /home/hdp_test/spark-2.0.1-bin-hadoop2.7/conf/spark-defaults.conf:
-  spark.driver.memory -> 22g
-  spark.kryo.referenceTracking -> true
-  spark.reducer.maxSizeInFlight -> 128m
-  spark.eventLog.enabled -> true
-  spark.shuffle.io.numConnectionsPerPeer -> 4
-  spark.eventLog.compress -> true
-  spark.serializer -> org.apache.spark.serializer.KryoSerializer
-  spark.shuffle.consolidateFiles -> true
-  spark.executor.extraJavaOptions -> -Diop.version=4.1.0.0 -XX:ParallelGCThreads=9 -XX:+AlwaysTenure 
-  spark.history.fs.logDirectory -> /home/hdp_test/hdfs_dir/spark-events
-  spark.yarn.executor.memoryOverhead -> 1536
-  spark.yarn.driver.memoryOverhead -> 400
-  spark.kryoserializer.buffer.max -> 256m
-  spark.eventLog.dir -> /home/hdp_test/hdfs_dir/spark-events
-  spark.executor.extraClassPath -> /usr/share/java/mysql-connector-java.jar
-  spark.master -> yarn
-  spark.sql.autoBroadcastJoinThreshold -> 67108864
-  spark.driver.extraClassPath -> /usr/share/java/mysql-connector-java.jar
-  spark.sql.shuffle.partitions -> 64
-
-    
-Main class:
-com.databricks.spark.sql.perf.RunTPCBenchmark
-Arguments:
--b
-com.databricks.spark.sql.perf.tpcds.TPCDS
--i
-2
--f
-q1
--d
-tpcds1g
-System properties:
-spark.kryo.referenceTracking -> true
-spark.driver.memory -> 22g
-spark.executor.memory -> 1g
-spark.executor.instances -> 12
-spark.reducer.maxSizeInFlight -> 128m
-spark.eventLog.compress -> true
-spark.eventLog.enabled -> true
-spark.shuffle.io.numConnectionsPerPeer -> 4
-SPARK_SUBMIT -> true
-spark.shuffle.consolidateFiles -> true
-spark.serializer -> org.apache.spark.serializer.KryoSerializer
-spark.executor.extraJavaOptions -> -Diop.version=4.1.0.0 -XX:ParallelGCThreads=9 -XX:+AlwaysTenure 
-spark.app.name -> q1
-spark.history.fs.logDirectory -> /home/hdp_test/hdfs_dir/spark-events
-spark.yarn.executor.memoryOverhead -> 1536
-spark.yarn.driver.memoryOverhead -> 400
-spark.jars -> file:/home/hdp_test/tpcds-setup/tpcdeps/spark-sql-perf/target/scala-2.11/spark-sql-perf-assembly-0.4.11-SNAPSHOT.jar
-spark.submit.deployMode -> client
-spark.kryoserializer.buffer.max -> 256m
-spark.executor.extraClassPath -> /usr/share/java/mysql-connector-java.jar
-spark.eventLog.dir -> /home/hdp_test/hdfs_dir/spark-events
-spark.master -> yarn
-spark.sql.autoBroadcastJoinThreshold -> 67108864
-spark.executor.cores -> 1
-spark.driver.extraClassPath -> /usr/share/java/mysql-connector-java.jar
-spark.sql.shuffle.partitions -> 64
-Classpath elements:
-file:/home/hdp_test/tpcds-setup/tpcdeps/spark-sql-perf/target/scala-2.11/spark-sql-perf-assembly-0.4.11-SNAPSHOT.jar
-
-
-== QUERY LIST ==
-q1-v1.4
-== QUERY LIST END ==
-== STARTING EXPERIMENT ==
-[Stage 0:>                                                       (0 + 0) / 2001][Stage 0:>                                                       (0 + 6) / 2001][Stage 0:>                                                       (3 + 6) / 2001][Stage 0:>                                                       (6 + 6) / 2001][Stage 0:>                                                      (10 + 6) / 2001][Stage 0:>                                                      (16 + 8) / 2001][Stage 0:>                                                      (25 + 7) / 2001][Stage 0:=>                                                     (38 + 7) / 2001][Stage 0:=>                                                     (49 + 6) / 2001][Stage 0:=>                                                     (63 + 6) / 2001][Stage 0:==>                                                    (76 + 6) / 2001][Stage 0:==>                                                    (93 + 6) / 2001][Stage 0:==>                                                   (108 + 8) / 2001][Stage 0:===>                                                  (129 + 8) / 2001][Stage 0:====>                                                 (155 + 7) / 2001][Stage 0:====>                                                 (176 + 6) / 2001][Stage 0:=====>                                                (199 + 6) / 2001][Stage 0:=====>                                                (216 + 6) / 2001][Stage 0:======>                                               (236 + 7) / 2001][Stage 0:======>                                               (258 + 7) / 2001][Stage 0:=======>                                              (276 + 6) / 2001][Stage 0:=======>                                              (291 + 7) / 2001][Stage 0:========>                                             (300 + 6) / 2001][Stage 0:========>                                             (320 + 8) / 2001][Stage 0:=========>                                            (348 + 7) / 2001][Stage 0:==========>                                           (375 + 6) / 2001][Stage 0:==========>                                           (399 + 9) / 2001][Stage 0:===========>                                          (428 + 7) / 2001][Stage 0:============>                                         (458 + 6) / 2001][Stage 0:=============>                                        (487 + 7) / 2001][Stage 0:=============>                                        (517 + 7) / 2001][Stage 0:==============>                                       (545 + 7) / 2001][Stage 0:==============>                                       (553 + 7) / 2001][Stage 0:===============>                                      (585 + 8) / 2001][Stage 0:================>                                     (619 + 6) / 2001][Stage 0:=================>                                    (641 + 8) / 2001][Stage 0:==================>                                   (677 + 7) / 2001][Stage 0:==================>                                  (707 + 10) / 2001][Stage 0:====================>                                 (746 + 6) / 2001][Stage 0:=====================>                                (779 + 7) / 2001][Stage 0:=====================>                                (810 + 7) / 2001][Stage 0:======================>                               (843 + 8) / 2001][Stage 0:=======================>                              (879 + 6) / 2001][Stage 0:========================>                             (900 + 6) / 2001][Stage 0:========================>                             (925 + 6) / 2001][Stage 0:=========================>                            (950 + 7) / 2001][Stage 0:==========================>                           (979 + 9) / 2001][Stage 0:==========================>                          (1010 + 9) / 2001][Stage 0:===========================>                         (1051 + 6) / 2001][Stage 0:============================>                        (1076 + 7) / 2001][Stage 0:============================>                        (1094 + 6) / 2001][Stage 0:=============================>                       (1116 + 8) / 2001][Stage 0:==============================>                      (1145 + 9) / 2001][Stage 0:===============================>                     (1176 + 7) / 2001][Stage 0:================================>                    (1211 + 6) / 2001][Stage 0:================================>                    (1242 + 8) / 2001][Stage 0:=================================>                  (1277 + 10) / 2001][Stage 0:==================================>                  (1312 + 9) / 2001][Stage 0:==================================>                 (1345 + 10) / 2001][Stage 0:====================================>                (1381 + 7) / 2001][Stage 0:====================================>               (1415 + 11) / 2001][Stage 0:======================================>              (1450 + 9) / 2001][Stage 0:=======================================>             (1487 + 6) / 2001][Stage 0:========================================>            (1514 + 7) / 2001][Stage 0:=========================================>           (1548 + 7) / 2001][Stage 0:=========================================>           (1578 + 8) / 2001][Stage 0:=========================================>          (1605 + 10) / 2001][Stage 0:===========================================>         (1637 + 7) / 2001][Stage 0:============================================>        (1674 + 6) / 2001][Stage 0:=============================================>       (1713 + 6) / 2001][Stage 0:==============================================>      (1743 + 8) / 2001][Stage 0:==============================================>      (1771 + 8) / 2001][Stage 0:===============================================>     (1812 + 8) / 2001][Stage 0:=================================================>   (1851 + 8) / 2001][Stage 0:=================================================>  (1886 + 10) / 2001][Stage 0:==================================================>  (1915 + 7) / 2001][Stage 0:===================================================> (1947 + 6) / 2001][Stage 0:====================================================>(1978 + 6) / 2001]                                                                                Couldn't read table customer_total_return and its not defined as a Benchmark.Table.
-Table store exists.
-Table customer exists.
-Running execution q1-v1.4 iteration: 1, StandardRun=true
-[Stage 6:>                                                          (0 + 2) / 2]                                                                                [Stage 8:>                 (0 + 6) / 63][Stage 10:>                (0 + 0) / 63][Stage 8:>                 (1 + 6) / 63][Stage 10:>                (0 + 0) / 63][Stage 8:>                 (2 + 6) / 63][Stage 10:>                (0 + 0) / 63][Stage 8:=>                (4 + 6) / 63][Stage 10:>                (0 + 0) / 63][Stage 8:=>                (5 + 6) / 63][Stage 10:>                (0 + 0) / 63][Stage 8:=>                (6 + 6) / 63][Stage 10:>                (0 + 0) / 63][Stage 8:==>               (7 + 6) / 63][Stage 10:>                (0 + 0) / 63][Stage 8:==>               (9 + 6) / 63][Stage 10:>                (0 + 0) / 63][Stage 8:===>             (12 + 6) / 63][Stage 10:>                (0 + 0) / 63][Stage 8:===>             (13 + 6) / 63][Stage 10:>                (0 + 0) / 63][Stage 8:===>             (14 + 6) / 63][Stage 10:>                (0 + 0) / 63][Stage 8:====>            (17 + 6) / 63][Stage 10:>                (0 + 0) / 63][Stage 8:=====>           (19 + 6) / 63][Stage 10:>                (0 + 0) / 63][Stage 8:=====>           (22 + 6) / 63][Stage 10:>                (0 + 0) / 63][Stage 8:======>          (23 + 6) / 63][Stage 10:>                (0 + 0) / 63][Stage 8:======>          (25 + 6) / 63][Stage 10:>                (0 + 0) / 63][Stage 8:=======>         (27 + 6) / 63][Stage 10:>                (0 + 0) / 63][Stage 8:=======>         (29 + 6) / 63][Stage 10:>                (0 + 0) / 63][Stage 8:========>        (32 + 6) / 63][Stage 10:>                (0 + 0) / 63][Stage 8:========>        (33 + 6) / 63][Stage 10:>                (0 + 0) / 63][Stage 8:=========>       (36 + 6) / 63][Stage 10:>                (0 + 0) / 63][Stage 8:==========>      (38 + 6) / 63][Stage 10:>                (0 + 0) / 63][Stage 8:===========>     (41 + 6) / 63][Stage 10:>                (0 + 0) / 63][Stage 8:===========>     (43 + 6) / 63][Stage 10:>                (0 + 0) / 63][Stage 8:============>    (45 + 6) / 63][Stage 10:>                (0 + 0) / 63][Stage 8:============>    (47 + 6) / 63][Stage 10:>                (0 + 0) / 63][Stage 8:=============>   (49 + 6) / 63][Stage 10:>                (0 + 0) / 63][Stage 8:==============>  (52 + 6) / 63][Stage 10:>                (0 + 0) / 63][Stage 8:==============>  (54 + 6) / 63][Stage 10:>                (0 + 0) / 63][Stage 8:===============> (57 + 6) / 63][Stage 10:>                (0 + 0) / 63][Stage 8:===============> (58 + 5) / 63][Stage 10:>                (0 + 1) / 63][Stage 8:================>(61 + 2) / 63][Stage 10:>                (0 + 4) / 63][Stage 8:================>(62 + 1) / 63][Stage 10:>                (0 + 5) / 63][Stage 10:>                                                        (0 + 6) / 63][Stage 10:>                                                        (1 + 5) / 63][Stage 10:===>                                                     (4 + 4) / 63][Stage 9:>                 (2 + 2) / 64][Stage 10:=>               (5 + 4) / 63][Stage 9:=>                (6 + 2) / 64][Stage 10:=>               (5 + 4) / 63][Stage 9:==>               (8 + 2) / 64][Stage 10:=>               (5 + 4) / 63][Stage 9:===>             (12 + 2) / 64][Stage 10:=>               (6 + 4) / 63][Stage 9:====>            (18 + 2) / 64][Stage 10:==>              (8 + 5) / 63][Stage 9:=====>           (22 + 2) / 64][Stage 10:==>              (9 + 4) / 63][Stage 9:=======>         (28 + 2) / 64][Stage 10:==>              (9 + 4) / 63][Stage 9:==========>      (38 + 2) / 64][Stage 10:==>             (10 + 4) / 63][Stage 9:===========>     (42 + 2) / 64][Stage 10:===>            (12 + 4) / 63][Stage 9:===========>     (44 + 2) / 64][Stage 10:===>            (13 + 4) / 63][Stage 9:=============>   (52 + 2) / 64][Stage 10:===>            (13 + 4) / 63][Stage 9:===============> (60 + 2) / 64][Stage 10:===>            (14 + 4) / 63][Stage 10:=============>                                          (15 + 6) / 63][Stage 10:===============>                                        (17 + 6) / 63][Stage 10:================>                                       (19 + 6) / 63][Stage 10:==================>                                     (21 + 6) / 63][Stage 10:=====================>                                  (24 + 6) / 63][Stage 10:=======================>                                (26 + 6) / 63][Stage 10:========================>                               (27 + 6) / 63][Stage 10:===========================>                            (31 + 6) / 63][Stage 10:=============================>                          (33 + 6) / 63][Stage 10:===============================>                        (35 + 6) / 63][Stage 10:================================>                       (37 + 6) / 63][Stage 10:===================================>                    (40 + 6) / 63][Stage 10:=====================================>                  (42 + 6) / 63][Stage 10:========================================>               (45 + 6) / 63][Stage 10:=========================================>              (47 + 6) / 63][Stage 10:=============================================>          (51 + 6) / 63][Stage 10:=================================================>      (56 + 6) / 63][Stage 10:====================================================>   (59 + 4) / 63][Stage 10:=======================================================>(62 + 1) / 63][Stage 11:==============>                                         (17 + 6) / 64][Stage 11:=====================>                                  (24 + 6) / 64][Stage 11:============================>                           (32 + 4) / 64][Stage 11:==================================>                     (39 + 4) / 64][Stage 11:=========================================>              (47 + 4) / 64][Stage 11:=================================================>      (57 + 4) / 64][Stage 13:======================================>                 (44 + 6) / 64]                                                                                Execution time: 23.006213017999997s
-Running execution q1-v1.4 iteration: 2, StandardRun=true
-[Stage 18:>                (2 + 6) / 63][Stage 20:>                (0 + 0) / 63][Stage 18:=>               (5 + 6) / 63][Stage 20:>                (0 + 0) / 63][Stage 18:==>              (8 + 6) / 63][Stage 20:>                (0 + 0) / 63][Stage 18:==>             (10 + 6) / 63][Stage 20:>                (0 + 0) / 63][Stage 18:===>            (13 + 6) / 63][Stage 20:>                (0 + 0) / 63][Stage 18:====>           (16 + 6) / 63][Stage 20:>                (0 + 0) / 63][Stage 18:====>           (18 + 6) / 63][Stage 20:>                (0 + 0) / 63][Stage 18:=====>          (22 + 6) / 63][Stage 20:>                (0 + 0) / 63][Stage 18:=====>          (23 + 6) / 63][Stage 20:>                (0 + 0) / 63][Stage 18:======>         (25 + 6) / 63][Stage 20:>                (0 + 0) / 63][Stage 18:======>         (27 + 6) / 63][Stage 20:>                (0 + 0) / 63][Stage 18:=======>        (29 + 6) / 63][Stage 20:>                (0 + 0) / 63][Stage 18:========>       (33 + 6) / 63][Stage 20:>                (0 + 0) / 63][Stage 18:=========>      (36 + 6) / 63][Stage 20:>                (0 + 0) / 63][Stage 18:=========>      (39 + 6) / 63][Stage 20:>                (0 + 0) / 63][Stage 18:==========>     (40 + 6) / 63][Stage 20:>                (0 + 0) / 63][Stage 18:===========>    (44 + 6) / 63][Stage 20:>                (0 + 0) / 63][Stage 18:===========>    (46 + 6) / 63][Stage 20:>                (0 + 0) / 63][Stage 18:============>   (49 + 6) / 63][Stage 20:>                (0 + 0) / 63][Stage 18:============>   (51 + 6) / 63][Stage 20:>                (0 + 0) / 63][Stage 18:=============>  (53 + 6) / 63][Stage 20:>                (0 + 0) / 63][Stage 18:==============> (56 + 6) / 63][Stage 20:>                (0 + 0) / 63][Stage 18:===============>(60 + 3) / 63][Stage 20:>                (0 + 3) / 63][Stage 18:===============>(61 + 2) / 63][Stage 20:>                (0 + 4) / 63][Stage 20:>                                                        (0 + 6) / 63][Stage 20:==>                                                      (3 + 5) / 63][Stage 20:===>                                                     (4 + 4) / 63][Stage 19:==>             (10 + 3) / 64][Stage 20:=>               (4 + 4) / 63][Stage 19:====>           (18 + 2) / 64][Stage 20:=>               (7 + 5) / 63][Stage 19:======>         (27 + 2) / 64][Stage 20:==>              (8 + 4) / 63][Stage 19:=========>      (36 + 2) / 64][Stage 20:==>             (10 + 4) / 63][Stage 19:===========>    (44 + 2) / 64][Stage 20:===>            (12 + 4) / 63][Stage 19:============>   (51 + 2) / 64][Stage 20:===>            (12 + 4) / 63][Stage 19:==============> (59 + 2) / 64][Stage 20:===>            (14 + 4) / 63][Stage 20:==============>                                         (16 + 6) / 63][Stage 20:==================>                                     (21 + 6) / 63][Stage 20:======================>                                 (25 + 6) / 63][Stage 20:=========================>                              (29 + 6) / 63][Stage 20:==========================>                             (30 + 6) / 63][Stage 20:===============================>                        (35 + 6) / 63][Stage 20:================================>                       (36 + 6) / 63][Stage 20:==================================>                     (39 + 6) / 63][Stage 20:=======================================>                (44 + 6) / 63][Stage 20:==========================================>             (48 + 6) / 63][Stage 20:=============================================>          (51 + 6) / 63][Stage 20:=================================================>      (56 + 6) / 63][Stage 20:====================================================>   (59 + 4) / 63][Stage 21:===================================>                    (41 + 6) / 64][Stage 21:=======================================================>(63 + 1) / 64]                                                                                Execution time: 12.92209325s
-Results written to table: 'sqlPerformance' at file:/home/hdp_test/tpcds-setup/performance//timestamp=1489989538393
-+-------+-----------+------------+------------+-----------------+-----+----+-----+---+
-|name   |minTimeMs  |maxTimeMs   |avgTimeMs   |stdDev           |count|exec|cores|mem|
-+-------+-----------+------------+------------+-----------------+-----+----+-----+---+
-|q1-v1.4|12922.09325|23006.213018|17964.153134|7130.549470250114|2    |12  |1    |1g |
-+-------+-----------+------------+------------+-----------------+-----+----+-----+---+
-
-+-------+-------------+
-|name   |executionTime|
-+-------+-------------+
-|q1-v1.4|23006.213018 |
-|q1-v1.4|12922.09325  |
-+-------+-------------+
-
-+----------------------------------+----------------------------------------------------------------+
-|configName                        |value                                                           |
-+----------------------------------+----------------------------------------------------------------+
-|spark.executor.extraJavaOptions   |-Diop.version=4.1.0.0 -XX:ParallelGCThreads=9 -XX:+AlwaysTenure |
-|spark.driver.memory               |22g                                                             |
-|spark.executor.instances          |12                                                              |
-|spark.executor.memory             |1g                                                              |
-|spark.executor.cores              |1                                                               |
-|spark.yarn.executor.memoryOverhead|1536                                                            |
-|spark.sql.shuffle.partitions      |64                                                              |
-+----------------------------------+----------------------------------------------------------------+
-
-Results: sqlContext.read.json("file:/home/hdp_test/tpcds-setup/performance//timestamp=1489989538393")
