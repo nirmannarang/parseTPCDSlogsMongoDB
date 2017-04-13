@@ -3,7 +3,6 @@
 import sys
 import re
 import json
-import subprocess
 import datetime
 from decimal import Decimal
 #q1,q2,q3_single_ppc64le_2e_1c_1g_0 NaN case
@@ -94,6 +93,13 @@ for lines in contents:
 tfile.close()
 dict_stats["workloads"]=workloads
 json_string=json.dumps(dict_stats)
+def validateDict(dict_test):
+	if dict_test["workloads"]==[]:
+		print("TPCDS failed to create metrics for this run")
+		exit()
+
+validateDict(dict_stats)
+
 #print(dict_stats)
 #print(json_string)
 jsonFile=open(jsonFileName, "wb")
