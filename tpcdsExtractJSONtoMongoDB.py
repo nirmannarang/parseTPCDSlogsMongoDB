@@ -96,7 +96,7 @@ json_string=json.dumps(dict_stats)
 def validateDict(dict_test):
 	if dict_test["workloads"]==[]:
 		print("TPCDS failed to create metrics for this run")
-		exit()
+		sys.exit(1)
 
 validateDict(dict_stats)
 
