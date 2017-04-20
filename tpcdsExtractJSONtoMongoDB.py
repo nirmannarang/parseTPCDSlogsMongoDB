@@ -135,4 +135,4 @@ validateDict(dict_stats)
 jsonFile=open(jsonFileName, "wb")
 jsonFile.write(json_string)
 jsonFile.close()
-
+print("Json file created successfully")
