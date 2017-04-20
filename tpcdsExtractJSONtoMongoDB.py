@@ -5,8 +5,10 @@ import re
 import json
 import datetime
 from decimal import Decimal
+import collections
+
 #q1,q2,q3_single_ppc64le_2e_1c_1g_0 NaN case
-if len(sys.argv) != 5:
+if len(sys.argv) != 6:
     print("All arguments are not passed !!")
     exit()
 
@@ -16,6 +18,7 @@ last_commit=sys.argv[3]
 #date=sys.argv[4]
 #print(logFile)
 master=sys.argv[4]
+cluster_file=sys.argv[5]
 tfile=open(logFile, 'rt')
 contents=tfile.readlines()
 content=tfile.read()
@@ -90,15 +93,42 @@ for lines in contents:
 		#print(dict_temp)
 		workloads.append(dict_temp.copy())
 
+def convert_unicode_dict(dict_cluster):
+	if isinstance(dict_cluster, basestring):
+		return str(dict_cluster)
+	elif isinstance(dict_cluster, collections.Mapping):
+		return dict(map(convert_unicode_dict, dict_cluster.iteritems()))
+	elif isinstance(dict_cluster, collections.Iterable):
+		return type(dict_cluster)(map(convert_unicode_dict, dict_cluster))
+	else:
+		return dict_cluster
+
 tfile.close()
 dict_stats["workloads"]=workloads
-json_string=json.dumps(dict_stats)
+
 def validateDict(dict_test):
 	if dict_test["workloads"]==[]:
 		print("TPCDS failed to create metrics for this run")
 		sys.exit(1)
 
+
+
+cluster_f=open(cluster_file,'rt')
+cluster_str=cluster_f.read()
+cluster_unicode_dict=json.loads(cluster_str)
+cluster_dict=convert_unicode_dict(cluster_unicode_dict)
+cluster_f.close()
+dict_stats["cluster_info"]=cluster_dict
+
+json_string=json.dumps(dict_stats)
+
 validateDict(dict_stats)
+
+#print(cluster_dict)
+
+#print("-----------------------------------------------")
+
+#print(dict_stats)
 
 #print(dict_stats)
 #print(json_string)
