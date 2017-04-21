@@ -73,7 +73,7 @@ for lines in contents:
 		if stdDev == 'NaN':
 			stdDev=float(Decimal('0').quantize(roundTwoPlaces))
 		else:
-			stdDev=float(Decimal(result.group(8)).quantize(roundTwoPlaces))
+			stdDev=float(Decimal(result.group(11)).quantize(roundTwoPlaces))
 		dict_temp["name"]="minTimeMs"
 		dict_temp["value"]=minTimeMs
 		metrics_temp.append(dict_temp.copy())
