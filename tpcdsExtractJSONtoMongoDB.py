@@ -8,7 +8,7 @@ from decimal import Decimal
 import collections
 
 #q1,q2,q3_single_ppc64le_2e_1c_1g_0 NaN case
-if len(sys.argv) != 6:
+if len(sys.argv) != 7:
     print("All arguments are not passed !!")
     exit()
 
@@ -19,6 +19,7 @@ last_commit=sys.argv[3]
 #print(logFile)
 master=sys.argv[4]
 cluster_file=sys.argv[5]
+spark_param_file=sys.argv[6]
 tfile=open(logFile, 'rt')
 contents=tfile.readlines()
 content=tfile.read()
@@ -119,6 +120,13 @@ cluster_unicode_dict=json.loads(cluster_str)
 cluster_dict=convert_unicode_dict(cluster_unicode_dict)
 cluster_f.close()
 dict_stats["cluster_info"]=cluster_dict
+
+spark_param_f=open(spark_param_file,'rt')
+spark_param_str=spark_param_f.read()
+spark_param_unicode_dict=json.loads(spark_param_str)
+spark_param_dict=convert_unicode_dict(spark_param_unicode_dict)
+spark_param_f.close()
+dict_stats["spark_params"]=spark_param_dict
 
 json_string=json.dumps(dict_stats)
 

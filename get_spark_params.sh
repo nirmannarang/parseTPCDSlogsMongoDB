@@ -13,17 +13,17 @@ gc_threads=`grep "^spark.executor.extraJavaOptions" $logfile | cut -f3 -d"=" | a
 exec_memoryOverhead=`grep "^spark.yarn.executor.memoryOverhead" $logfile | awk {'print $3'}`
 driver_memoryOverhead=`grep "^spark.yarn.driver.memoryOverhead" $logfile | awk {'print $3'}`
 
-echo "{" >${WORKDIR}/paramters.json
-echo "\"num_executors\":\"$num_executors\"," >>${WORKDIR}/paramters.json
-echo "\"executor_cores\":\"$executor_cores\"," >>${WORKDIR}/paramters.json
-echo "\"executor_memory\":\"$executor_memory\"," >>${WORKDIR}/paramters.json
-echo "\"driver_memory\":\"$driver_memory\"," >>${WORKDIR}/paramters.json
-echo "\"driver_cores\":\"$driver_cores\"," >>${WORKDIR}/paramters.json
-echo "\"total_executor_cores\":\"$total_executor_cores\"," >>${WORKDIR}/paramters.json
-echo "\"shuffle_partitions\":\"$shuffle_partitions\"," >>${WORKDIR}/paramters.json
-echo "\"gc_threads\":\"$gc_threads\"," >>${WORKDIR}/paramters.json
-echo "\"exec_memoryOverhead\":\"$exec_memoryOverhead\"," >>${WORKDIR}/paramters.json
-echo "\"driver_memoryOverhead\":\"$driver_memoryOverhead\"" >>${WORKDIR}/paramters.json
-echo "}" >>${WORKDIR}/paramters.json
+echo "{" >${WORKDIR}/spark_params
+echo "\"num_executors\":\"$num_executors\"," >>${WORKDIR}/spark_params
+echo "\"executor_cores\":\"$executor_cores\"," >>${WORKDIR}/spark_params
+echo "\"executor_memory\":\"$executor_memory\"," >>${WORKDIR}/spark_params
+echo "\"driver_memory\":\"$driver_memory\"," >>${WORKDIR}/spark_params
+echo "\"driver_cores\":\"$driver_cores\"," >>${WORKDIR}/spark_params
+echo "\"total_executor_cores\":\"$total_executor_cores\"," >>${WORKDIR}/spark_params
+echo "\"shuffle_partitions\":\"$shuffle_partitions\"," >>${WORKDIR}/spark_params
+echo "\"gc_threads\":\"$gc_threads\"," >>${WORKDIR}/spark_params
+echo "\"exec_memoryOverhead\":\"$exec_memoryOverhead\"," >>${WORKDIR}/spark_params
+echo "\"driver_memoryOverhead\":\"$driver_memoryOverhead\"" >>${WORKDIR}/spark_params
+echo "}" >>${WORKDIR}/spark_params
 
 
