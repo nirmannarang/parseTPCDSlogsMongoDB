@@ -6,10 +6,10 @@ ip=`hostname --ip-address`
 hostname=`hostname`
 ram=`free -g | head -2 | tail -1 | awk {'print $2'}`
 vcpu=`cat /proc/cpuinfo | grep processor | wc -l`
-echo "{" > ${WORKDIR}/config_details
-echo "\"master\": {\"ip\":\"$ip\",\"hostname\":\"$hostname\",\"vcpus\":$vcpu,\"ram\":\"${ram}GB\"}," >> ${WORKDIR}/config_details
-echo "\"slaves\": [" >> ${WORKDIR}/config_details
-#echo "$ip,$hostname,${RAM}GB,$vcpu" >> config_details
+echo "{" > ${WORKDIR}/cluster_info
+echo "\"master\": {\"ip\":\"$ip\",\"hostname\":\"$hostname\",\"vcpus\":$vcpu,\"ram\":\"${ram}GB\"}," >> ${WORKDIR}/cluster_info
+echo "\"slaves\": [" >> ${WORKDIR}/cluster_info
+#echo "$ip,$hostname,${RAM}GB,$vcpu" >> cluster_info
 
 count=`cat ${HADOOP_HOME}/etc/hadoop/slaves | wc -l`
 for server in $SLAVES
@@ -19,13 +19,13 @@ ip=$( ssh $server "hostname --ip-address")
 hostname=$(ssh $server "hostname")
 ram=$(ssh $server "free -g" | head -2 | tail -1 | awk {'print $2'})
 vcpu=$(ssh $server "cat /proc/cpuinfo | grep processor | wc -l")
-#echo "$ip,$hostname,${RAM}GB,$vcpu">>config_details
-echo "{\"ip\":\"$ip\",\"hostname\":\"$hostname\",\"vcpus\":$vcpu,\"ram\":\"${ram}GB\"}" >> ${WORKDIR}/config_details
+#echo "$ip,$hostname,${RAM}GB,$vcpu">>cluster_info
+echo "{\"ip\":\"$ip\",\"hostname\":\"$hostname\",\"vcpus\":$vcpu,\"ram\":\"${ram}GB\"}" >> ${WORKDIR}/cluster_info
 if [ $count -ne 1 ]
 then 
-	echo "," >> ${WORKDIR}/config_details
+	echo "," >> ${WORKDIR}/cluster_info
 fi
 ((count=count-1))
 done
-echo "]" >> ${WORKDIR}/config_details
-echo "}" >> ${WORKDIR}/config_details
+echo "]" >> ${WORKDIR}/cluster_info
+echo "}" >> ${WORKDIR}/cluster_info
