@@ -8,7 +8,7 @@ from decimal import Decimal
 import collections
 
 #q1,q2,q3_single_ppc64le_2e_1c_1g_0 NaN case
-if len(sys.argv) != 7:
+if len(sys.argv) != 8:
     print("All arguments are not passed !!")
     exit()
 
@@ -18,8 +18,9 @@ last_commit=sys.argv[3]
 #date=sys.argv[4]
 #print(logFile)
 master=sys.argv[4]
-cluster_file=sys.argv[5]
-spark_param_file=sys.argv[6]
+git_branch=sys.argv[5]
+cluster_file=sys.argv[6]
+spark_param_file=sys.argv[7]
 tfile=open(logFile, 'rt')
 contents=tfile.readlines()
 content=tfile.read()
@@ -50,6 +51,7 @@ dict_stats["git_url"]=git_url
 dict_stats["last_commit"]=last_commit
 dict_stats["date"]=date_str
 dict_stats["master"]=master
+dict_stats["branch"]=git_branch
 workloads=[]
 dict_temp={}
 metrics_temp=[]
