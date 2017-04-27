@@ -41,7 +41,7 @@ date_str=date_str+'Z'
 queryList=[]
 flag=0
 #regex=re.compile('\|name\s*\|minTimeMs\s*\|maxTimeMs\s*\|avgTimeMs\s*\|')
-regex=re.compile(r"\|(q\d+-?v?\d*\.?\d*)\s*\|((\d*\.?\d*)|(NaN))\s*\|((\d*\.?\d*)|(NaN))\s*\|((\d*\.?\d*)|(NaN))\s*\|((\d*\.?\d*)|(NaN))\s*\|")
+regex=re.compile(r"\|(q\d*\w*-?v?\d*\.?\d*)\s*\|((\d*\.?\d*)|(NaN))\s*\|((\d*\.?\d*)|(NaN))\s*\|((\d*\.?\d*)|(NaN))\s*\|((\d*\.?\d*)|(NaN))\s*\|")
 #\|(q\d+-v\d+\.?\d*)\s*\|((\d+\.?\d*)|(NaN))\s*\|((\d+\.?\d*)|(NaN))\s*\|((\d+\.?\d*)|(NaN))\s*\|((\d+\.?\d*)|(NaN))\s*\|
 #|q1-v1.4|10417.316601|21206.434051|15811.875326000001|7629.058111913111 |2    |12  |1    |1g |
 
