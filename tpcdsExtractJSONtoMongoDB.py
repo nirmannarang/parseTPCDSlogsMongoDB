@@ -18,7 +18,8 @@ last_commit=sys.argv[3]
 #date=sys.argv[4]
 #print(logFile)
 master=sys.argv[4]
-git_branch=sys.argv[5]
+git_branch=""
+git_tag=sys.argv[5]
 cluster_file=sys.argv[6]
 spark_param_file=sys.argv[7]
 tfile=open(logFile, 'rt')
@@ -52,6 +53,7 @@ dict_stats["last_commit"]=last_commit
 dict_stats["date"]=date_str
 dict_stats["master"]=master
 dict_stats["branch"]=git_branch
+dict_stats["tag"]=git_tag
 workloads=[]
 dict_temp={}
 metrics_temp=[]
