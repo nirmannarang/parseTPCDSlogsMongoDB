@@ -8,10 +8,11 @@ executor_memory=`grep executorMemory $logfile | awk {'print $2'}`
 driver_memory=`grep driverMemory $logfile | awk {'print $2'}`
 driver_cores=`grep driverCores $logfile | awk {'print $2'}`
 total_executor_cores=`grep totalExecutorCores $logfile | awk {'print $2'}`
-shuffle_partitions=`grep "^spark.sql.shuffle.partitions" $logfile | awk {'print $3'}`
-gc_threads=`grep "^spark.executor.extraJavaOptions" $logfile | cut -f3 -d"=" | awk {'print $1'}`
-exec_memoryOverhead=`grep "^spark.yarn.executor.memoryOverhead" $logfile | awk {'print $3'}`
-driver_memoryOverhead=`grep "^spark.yarn.driver.memoryOverhead" $logfile | awk {'print $3'}`
+shuffle_partitions=`grep "spark.sql.shuffle.partitions" $logfile  | head -1 | sed 's/->//' | sed 's/,/ /' | sed 's/)//' | sed 's/(//' |awk  {'print $2'}`
+gc_threads=`grep "spark.executor.extraJavaOptions" $logfile | head -1 |cut -f3 -d"=" | awk {'print $1'}`
+exec_memoryOverhead=`grep "spark.yarn.executor.memoryOverhead" $logfile | head -1 | sed 's/->//' | sed 's/,/ /' | sed 's/)//' | sed 's/(//' |awk  {'print $2'}`
+driver_memoryOverhead=`grep "spark.yarn.driver.memoryOverhead" $logfile | head -1 | sed 's/->//' | sed 's/,/ /' | sed 's/)//' | sed 's/(//' |awk  {'print $2'}`
+
 
 echo "{" >${WORKDIR}/spark_params
 echo "\"num_executors\":\"$num_executors\"," >>${WORKDIR}/spark_params
@@ -25,5 +26,4 @@ echo "\"gc_threads\":\"$gc_threads\"," >>${WORKDIR}/spark_params
 echo "\"exec_memoryOverhead\":\"$exec_memoryOverhead\"," >>${WORKDIR}/spark_params
 echo "\"driver_memoryOverhead\":\"$driver_memoryOverhead\"" >>${WORKDIR}/spark_params
 echo "}" >>${WORKDIR}/spark_params
-
 
